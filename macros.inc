@@ -1,3 +1,4 @@
+;; gently borrowed from tsoding
 macro funcall2 func, a, b
 {
     mov rdi, a
