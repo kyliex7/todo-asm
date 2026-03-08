@@ -1,5 +1,6 @@
+;;
 ;; DO WHAT THE FUCK YOU WANT WITH THIS
-;; I BET YOU WON'T
+;;
 
 format ELF64 executable 3
 include "macros.inc"
