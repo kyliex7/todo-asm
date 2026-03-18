@@ -35,7 +35,7 @@ print_not_done: db " [ ] "
 print_not_done_len = $ - print_not_done
 
 choice_buf: rb 1
-jump_table: dq add_task, mark_task, view_task, del_task, exit
+jump_table: dq add_task, mark_task, view_task, del_task, help_you, exit
 
 task_id: rb 2
 
@@ -78,8 +78,9 @@ task_del_suc_len = $ - task_del_suc
 ;; .text
 segment readable executable
 _start:
-mainloop:
+	; initial print of the help / dashboard or what the heck it is
 	write 1, dashboard, dashboard_len
+mainloop:
 	write 1, optmsg, optmsg_len
 
 	read 0, choice_buf, 1
@@ -94,7 +95,7 @@ mainloop:
 
 	movzx rax, byte [choice_buf]
 	sub rax, '0'
-	cmp rax, 4
+	cmp rax, 5
 	jbe valid_choice
 	jmp invalid_choice
 
@@ -244,6 +245,9 @@ del_task:
 	write 1, invalid_choice_msg, invalid_choice_msg_len
 	jmp mainloop
 
+help_you:
+	write 1, dashboard, dashboard_len
+	jmp mainloop
 
 endroute:
 	syscall1 60, 0
