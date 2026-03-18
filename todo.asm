@@ -112,7 +112,7 @@ exit:
 	jmp endroute
 
 print_err:
-	write 1, rdi, rsi
+	write 2, rdi, rsi
 	jmp mainloop
 
 add_task:
