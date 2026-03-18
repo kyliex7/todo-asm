@@ -1,7 +1,7 @@
-;;
-;; DO WHAT THE FUCK YOU WANT WITH THIS
-;;
-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;; DO WHAT THE FUCK YOU WANT WITH THIS ;;;;;;;;;;;;;; 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                                  
 format ELF64 executable 3
 include "macros.inc"
 entry _start
@@ -64,6 +64,9 @@ task_view_tmp_len = $ - task_view_tmp
 task_del_suc: db "Task deleted successfully", 0x0a
 task_del_suc_len = $ - task_del_suc
 
+testmsg: db "yet another uselless shytpiece", 0x0a
+testmsgl = $ - testmsg
+
 ;; dbg
 ; succ: db "[debug] this is expected", 0x0a
 ; succl = $ - succ
@@ -79,6 +82,7 @@ task_del_suc_len = $ - task_del_suc
 segment readable executable
 _start:
 	; initial print of the help / dashboard or what the heck it is
+	write 1, testmsg, testmsgl
 	write 1, dashboard, dashboard_len
 mainloop:
 	write 1, optmsg, optmsg_len
