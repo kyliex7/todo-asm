@@ -7,5 +7,6 @@
 			|   [ 2 ]  View task list       |
 			|   [ 3 ]  Delete a task        |
 			|   [ 4 ]  Exit                 |
+			|   [ 5 ]  Help                 |
 			|                               |
 			+===============================+
